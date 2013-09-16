@@ -1,0 +1,97 @@
+<html ng-app="diceroller">
+  <head>
+    <title>Nuclear Risk Dice Roller</title>
+    <link rel="stylesheet" type="text/css" href="diceroller.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="diceroller.js"></script>
+  </head>
+  <body>
+    <span class="diceinput">
+      <div id="modifiers">
+	<h2>Modifiers</h2>
+	<span class="edge">
+	  <div class="row">
+	    <div class="cell">
+	      <input type="checkbox" ng-model="firepower"/>
+	      <label>Firepower</label>
+	    </div>
+	    
+	    <div class="cell">
+	      <input type="checkbox" ng-model="ambush"/>
+	      <label>Ambush</label>
+	    </div>
+
+	    <div class="cell">
+	      <input type="checkbox" ng-model="doublecasualties"/>
+	      <label>2x Casualties</label>
+	    </div>
+	  </div>
+	  
+	  <div class="row">
+	    <div class="cell">
+	      <input type="checkbox" ng-model="bunker"/>
+	      <label>Bunker</label>
+	    </div>
+
+	    <div class="cell">
+	      <input type="checkbox" ng-model="atkrad"/>
+	      <label>Atk Rad</label>
+	    </div>
+	    
+	    <div class="cell">
+	      <input type="checkbox" ng-model="dfndrad"/>
+	      <label>Dfnd Rad</label>
+	    </div>
+	  </div>
+	</span>
+      </div>
+      <hr>
+      <div class="mybutton">
+	<button ng-click="rollOnce(); a_armysize_refresh(); d_armysize_refresh()" class="button">Roll Dice</button>
+      </div>
+      <div id="attack">
+	<h2>Attack <span id="attackdice">{{ a_rolls }}</span></h2>
+	<span class="edge">
+          <label>Army Size <span style="color:red" ng-show="a_loses > 0">(Lost {{ a_loses }})</span></label>
+          <input type="tel" ng-model="a_armysize" ng-change="clearResults(); a_armysize_update()"/>
+	  
+          <span ng-show="a_armysize > 1">
+            <label>Dice to roll</label>
+	  </span>
+          <span class="radio" ng-show="a_armysize > 1">
+            <input type="radio" ng-model="a_numrolls" value="1" />
+            <label>1</label>
+          </span>
+          <span class="radio" ng-show="a_armysize > 2">
+            <input type="radio" ng-model="a_numrolls" value="2" />
+            <label>2</label>
+          </span>
+          <span class="radio" ng-show="a_armysize > 3">
+            <input type="radio" ng-model="a_numrolls" value="3" />
+            <label>3</label>
+          </span>
+	</span>
+      </div>
+      <div id="defend">
+	<h2>Defend <span id="defenddice">{{ d_rolls }}</span></h2>
+	<span class="edge">
+	  <label>Army size <span style="color:red" ng-show="d_loses > 0">(Lost {{ d_loses }})</span></label>
+	  <input type="tel" ng-model="d_armysize" ng-change="clearResults(); d_armysize_update()"/>
+
+	  
+	  <span ng-show="d_armysize > 0">
+	    <label>Dice to roll</label>
+	  </span>
+	  <span class="radio" ng-show="d_armysize > 0">
+            <input type="radio" ng-model="d_numrolls" value="1"/>
+            <label>1</label>
+	  </span>
+	  <span class="radio" ng-show="d_armysize > 1">
+            <input type="radio" ng-model="d_numrolls" value="2"/>
+            <label>2</label>
+	  </span>
+	</span>
+      </div>
+    </span>
+  </body>
+</html>
