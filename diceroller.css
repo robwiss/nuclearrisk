@@ -1,0 +1,36 @@
+input[type=text], input[type=tel] {
+  font-size: 1rem;
+  width: 100%;
+}
+
+span.edge {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 0;
+  padding-bottom: 0;
+  display: block;
+}
+
+.mybutton {
+  margin-left:auto;
+  margin-right:auto;
+  width:20%;
+}
+
+#attackdice {
+  color:red;
+  font-weight:normal;
+}
+
+#defenddice {
+  color:blue;
+  font-weight:normal;
+}
+
+.cell {
+  display: table-cell;
+}
+
+.row {
+  display: table-row;
+}
