@@ -54,16 +54,16 @@ app.run(
 	    
 	    // if a number of rolls is selected and armysize is enough to roll
 	    // the currently selected amount of dice
-	    if (a_numrolls > 0 && a_numrolls < a_armysize) {
+	    if (a_numrolls > 0 && aShowDie(a_numrolls)) {
 		return;
 	    }
 
-	    // if no valid number of rolls is selected
-	    if (a_armysize < 5) {
-		$rootScope.a_numrolls = a_armysize - 1;
-	    }
-	    else {
-		$rootScope.a_numrolls = 3;
+	    // select the largest available die
+	    for (var i=3; i > 0; i--) {
+		if ($rootScope.aShowDie(i)) {
+		    $rootScope.a_numrolls = i;
+		    return;
+		}
 	    }
 	}
 
@@ -77,17 +77,17 @@ app.run(
 	    }
 
 	    // if a number of rolls is selected and armysize is enough to roll
-	    // the currently selected amount of dice
-	    if (d_numrolls > 0 && d_numrolls <= d_armysize) {
+	    // the currently selected amount of dice	   
+	    if (d_numrolls > 0 && dShowDie(d_numrolls)) {
 		return;
 	    }
 
-	    // if no valid number of rolls is selected
-	    if (d_armysize < 3) {
-		$rootScope.d_numrolls = d_armysize;
-	    }
-	    else {
-		$rootScope.d_numrolls = 2;
+	    // select the largest available die
+	    for (var i=2; i > 0; i--) {
+		if ($rootScope.dShowDie(i)) {
+		    $rootScope.d_numrolls = i;
+		    return;
+		}
 	    }
 	}
 
@@ -101,6 +101,47 @@ app.run(
 	    $rootScope.clearResults();
 	    $rootScope.d_numrolls = 0;
 	    $rootScope.d_armysize_refresh();
+	}
+	
+	// function for determining whether or not an attacking die can be
+	// displayed
+	$rootScope.aShowDie = function(die_num) {
+	    var a_armysize = parseInt($rootScope.a_armysize);
+	    var m_atkrad   = $rootScope.atkrad;
+
+	    var lose_die = false;
+	    if (m_atkrad) {
+		// compute a die_max representing the max value a die can be
+		// given that radiation has taken a die away
+		var die_max = Math.min(a_armysize - 1, 3);
+
+		// lose the die if it is the max die or greater but only if it's
+		// not die #1 (can't lose the last die)
+		lose_die = die_num >= die_max && die_num != 1;
+	    }
+
+	    return a_armysize > die_num && !lose_die;
+	}
+
+	// function for determining whether or not a defending die can be
+	// displayed
+	$rootScope.dShowDie = function(die_num) {
+	    var d_armysize = parseInt($rootScope.d_armysize);
+	    var m_dfndrad  = $rootScope.dfndrad;
+	    var m_bunker   = $rootScope.bunker;
+
+	    var lose_die = false;
+	    if (m_dfndrad && !m_bunker) {
+		// compute a die_max representing the max value a die can be
+		// given that radiation has taken a die away
+		var die_max = Math.min(d_armysize - 1, 2);
+		
+		// lose the die if it is the max die or greater but only if it's
+		// not die #1 (can't lose the last die)
+		lose_die = die_num >= die_max && die_num != 1;
+	    }
+
+	    return d_armysize >= die_num && !lose_die;
 	}
 
 	$rootScope.rollOnce = function() {
