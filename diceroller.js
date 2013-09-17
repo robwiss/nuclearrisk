@@ -43,7 +43,11 @@ app.run(
 	    $rootScope.d_loses = null;
 	}
 
-	$rootScope.a_armysize_refresh = function() {
+	$rootScope.a_armysize_refresh = function(reset) {
+	    // reset is a default parameter for whether or not to reset the 
+	    // die values to the current maximum
+	    reset = typeof reset !== 'undefined' ? reset : false;
+
 	    var a_armysize = parseInt($rootScope.a_armysize);
 	    var a_numrolls = parseInt($rootScope.a_numrolls);
 	    // if armysize is not enough to roll dice
@@ -54,7 +58,7 @@ app.run(
 	    
 	    // if a number of rolls is selected and armysize is enough to roll
 	    // the currently selected amount of dice
-	    if (a_numrolls > 0 && aShowDie(a_numrolls)) {
+	    if (a_numrolls > 0 && $rootScope.aShowDie(a_numrolls) && !reset) {
 		return;
 	    }
 
@@ -67,7 +71,11 @@ app.run(
 	    }
 	}
 
-	$rootScope.d_armysize_refresh = function() {
+	$rootScope.d_armysize_refresh = function(reset) {
+	    // reset is a default parameter for whether or not to reset the 
+	    // die values to the current maximum
+	    reset = typeof reset !== 'undefined' ? reset : false;
+
 	    var d_armysize = parseInt($rootScope.d_armysize);
 	    var d_numrolls = parseInt($rootScope.d_numrolls);
 	    // if armysize is not enough to roll dice
@@ -78,7 +86,7 @@ app.run(
 
 	    // if a number of rolls is selected and armysize is enough to roll
 	    // the currently selected amount of dice	   
-	    if (d_numrolls > 0 && dShowDie(d_numrolls)) {
+	    if (d_numrolls > 0 && $rootScope.dShowDie(d_numrolls) && !reset) {
 		return;
 	    }
 
@@ -160,8 +168,6 @@ app.run(
 	    var m_ambush       = $rootScope.ambush;
 	    var m_2xcasualties = $rootScope.doublecasualties;
 	    var m_bunker       = $rootScope.bunker;
-	    var m_atkrad       = $rootScope.atkrad;
-	    var m_dfndrad      = $rootScope.dfndrad;
 
 	    // add an extra die to the attacker for firepower
 	    if (m_firepower == true) {
@@ -171,19 +177,6 @@ app.run(
 	    // add a die to defender for bunker
 	    if (m_bunker == true) {
 		d_numrolls += 1;
-	    }
-
-	    // subtract a die from attacker for radiation, min 1 die
-	    if (m_atkrad == true) {
-		a_numrolls -= 1;
-		if (a_numrolls < 1) a_numrolls = 1;
-	    }
-
-	    // subtract a die from defender for radiation unless in bunker, min
-	    // 1 die	    
-	    if (m_dfndrad == true && !m_bunker) {
-		d_numrolls -= 1;
-		if (d_numrolls < 1) d_numrolls = 1;
 	    }
 
 	    var a_rolls = [];
