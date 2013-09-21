@@ -1,4 +1,4 @@
-var app = angular.module('diceroller', []);
+var app = angular.module('diceroller', ['ui.bootstrap']);
 
 var rollNDie = function(n) {
     return Math.floor((Math.random()*n)+1);
@@ -114,6 +114,9 @@ app.run(
 	// function for determining whether or not an attacking die can be
 	// displayed
 	$rootScope.aShowDie = function(die_num) {
+	    if (!($rootScope.a_armysize > 1)) {
+		return false;
+	    }
 	    var a_armysize = parseInt($rootScope.a_armysize);
 	    var m_atkrad   = $rootScope.atkrad;
 
@@ -134,6 +137,9 @@ app.run(
 	// function for determining whether or not a defending die can be
 	// displayed
 	$rootScope.dShowDie = function(die_num) {
+	    if (!($rootScope.d_armysize > 1)) {
+		return false;
+	    }
 	    var d_armysize = parseInt($rootScope.d_armysize);
 	    var m_dfndrad  = $rootScope.dfndrad;
 	    var m_bunker   = $rootScope.bunker;
