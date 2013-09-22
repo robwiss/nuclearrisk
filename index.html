@@ -65,12 +65,12 @@
 	  </div>
 	</div>
 	
-        <span ng-show="a_armysize > 1">
+        <div class="diceselect" ng-show="aShowDie(1)">
           <label>Dice to roll: </label>
-	</span>
-        <button type="button" class="btn-mini btn-danger" ng-model="a_numrolls" btn-radio="1" ng-show="aShowDie(1)" >1</button>
-        <button type="button" class="btn-mini btn-danger" ng-model="a_numrolls" btn-radio="2" ng-show="aShowDie(2)" >2</button>
-        <button type="button" class="btn-mini btn-danger" ng-model="a_numrolls" btn-radio="3" ng-show="aShowDie(3)" >3</button>
+          <button type="button" class="btn-mini btn-danger" ng-model="a_numrolls" btn-radio="1" ng-show="aShowDie(1)" >1</button>
+          <button type="button" class="btn-mini btn-danger" ng-model="a_numrolls" btn-radio="2" ng-show="aShowDie(2)" >2</button>
+          <button type="button" class="btn-mini btn-danger" ng-model="a_numrolls" btn-radio="3" ng-show="aShowDie(3)" >3</button>
+	</div>
       </span>
     </div>
     <div id="defend">
@@ -83,13 +83,17 @@
 	  </div>
 	</div>
 	
-	<span ng-show="d_armysize > 0">
+	<div class="diceselect" ng-show="dShowDie(1)">
 	  <label>Dice to roll: </label>
-	</span>
-        <button type="button" class="btn-mini btn-primary" ng-model="d_numrolls" btn-radio="1" ng-show="dShowDie(1)" >1</button>
-        <button type="button" class="btn-mini btn-primary" ng-model="d_numrolls" btn-radio="2" ng-show="dShowDie(2)" >2</button>
+          <button type="button" class="btn-mini btn-primary" ng-model="d_numrolls" btn-radio="1" ng-show="dShowDie(1)" >1</button>
+          <button type="button" class="btn-mini btn-primary" ng-model="d_numrolls" btn-radio="2" ng-show="dShowDie(2)" >2</button>
+	</div>
       </span>
     </div>
+<!-- A couple of breaks for mobile.
+     Keeps the bottom of the page from being right on the number of dice to
+     roll.
+-->
     <br>
     <br>
   </body>

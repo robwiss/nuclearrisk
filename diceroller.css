@@ -4,6 +4,8 @@
 }
 */
 
+.nav, .pagination, .carousel a { cursor: pointer; }
+
 span.edge {
   padding-left: 20px;
   padding-right: 20px;
@@ -12,7 +14,9 @@ span.edge {
   display: block;
 }
 
-.nav, .pagination, .carousel a { cursor: pointer; }
+.diceselect {
+  padding-top: 4px;
+}
 
 .centered {
   width:30%;
