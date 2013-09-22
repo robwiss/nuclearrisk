@@ -137,7 +137,7 @@ app.run(
 	// function for determining whether or not a defending die can be
 	// displayed
 	$rootScope.dShowDie = function(die_num) {
-	    if (!($rootScope.d_armysize > 1)) {
+	    if (!($rootScope.d_armysize > 0)) {
 		return false;
 	    }
 	    var d_armysize = parseInt($rootScope.d_armysize);
