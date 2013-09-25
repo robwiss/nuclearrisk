@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('dicerollerApp', [])
+angular.module('dicerollerApp', ['ui.bootstrap'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
