@@ -4,7 +4,7 @@
     <span class="edge">
       <div class="row">
 	<div class="cell">
-	  <button type="button" class="btn btn-info btn-block" ng-model="firepower" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
+	  <button type="button" class="btn btn-info btn-block" ng-model="firepower" ng-change="aArmysizeRefresh(true)" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
 	    Firepower
 	  </button>
 	</div>
@@ -21,7 +21,7 @@
       </div>
       <div class="row">
 	<div class="cell">
-	  <button type="button" class="btn btn-info btn-block" ng-model="bunker" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
+	  <button type="button" class="btn btn-info btn-block" ng-model="bunker" ng-change="dArmysizeRefresh(true)" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
 	    Bunker
 	  </button>
 	</div>
@@ -59,6 +59,7 @@
 	<button type="button" class="btn btn-danger btn-mini" ng-model="aNumrolls" btn-radio="1" ng-show="aShowDie(1)" >1</button>
 	<button type="button" class="btn btn-danger btn-mini" ng-model="aNumrolls" btn-radio="2" ng-show="aShowDie(2)" >2</button>
 	<button type="button" class="btn btn-danger btn-mini" ng-model="aNumrolls" btn-radio="3" ng-show="aShowDie(3)" >3</button>
+	<button type="button" class="btn btn-danger btn-mini" ng-model="aNumrolls" btn-radio="4" ng-show="aShowDie(4)" >4</button>
       </div>
     </span>
   </div>
@@ -76,6 +77,7 @@
 	Dice to roll: 
 	<button type="button" class="btn btn-primary btn-mini" ng-model="dNumrolls" btn-radio="1" ng-show="dShowDie(1)" >1</button>
 	<button type="button" class="btn btn-primary btn-mini" ng-model="dNumrolls" btn-radio="2" ng-show="dShowDie(2)" >2</button>
+	<button type="button" class="btn btn-primary btn-mini" ng-model="dNumrolls" btn-radio="3" ng-show="dShowDie(3)" >3</button>
       </div>
     </span>
   </div>

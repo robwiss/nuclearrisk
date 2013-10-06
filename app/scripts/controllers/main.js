@@ -65,7 +65,7 @@ angular.module('dicerollerApp')
       }
 
       // select the largest available die
-      for (var i=3; i > 0; i--) {
+      for (var i=4; i > 0; i--) {
         if ($scope.aShowDie(i)) {
           $scope.aNumrolls = i;
           return;
@@ -93,7 +93,7 @@ angular.module('dicerollerApp')
       }
 
       // select the largest available die
-      for (var i=2; i > 0; i--) {
+      for (var i=3; i > 0; i--) {
         if ($scope.dShowDie(i)) {
           $scope.dNumrolls = i;
           return;
@@ -119,14 +119,23 @@ angular.module('dicerollerApp')
       if (($scope.aArmysize > 1) === false) {
         return false;
       }
-      var aArmysize = parseInt($scope.aArmysize, 10);
-      var mAtkrad   = $scope.atkrad;
+      var aArmysize  = parseInt($scope.aArmysize, 10);
+      var mAtkrad    = $scope.atkrad === 1;
+      var mFirepower = $scope.firepower === 1;
+
+      if (!mFirepower && dieNum === 4) {
+	return false;
+      }
+
+      if (mFirepower) {
+	aArmysize += 1;
+      }
 
       var loseDie = false;
       if (mAtkrad) {
         // compute a dieMax representing the max value a die can be
         // given that radiation has taken a die away
-        var dieMax = Math.min(aArmysize - 1, 3);
+        var dieMax = Math.min(aArmysize - 1, mFirepower ? 4 : 3);
 
         // lose the die if it is the max die or greater but only if it's
         // not die #1 (can't lose the last die)
@@ -143,14 +152,22 @@ angular.module('dicerollerApp')
         return false;
       }
       var dArmysize = parseInt($scope.dArmysize, 10);
-      var mDfndrad  = $scope.dfndrad;
-      var mBunker   = $scope.bunker;
+      var mDfndrad  = $scope.dfndrad === 1;
+      var mBunker   = $scope.bunker === 1;
+
+      if (dieNum === 3 && !mBunker) {
+	return false;
+      }
+
+      if (mBunker) {
+	dArmysize += 1;
+      }
 
       var loseDie = false;
-      if (mDfndrad && !mBunker) {
+      if (mDfndrad) {
         // compute a dieMax representing the max value a die can be
         // given that radiation has taken a die away
-        var dieMax = Math.min(dArmysize - 1, 2);
+        var dieMax = Math.min(dArmysize - 1, mBunker ? 3 : 2);
         
         // lose the die if it is the max die or greater but only if it's
         // not die #1 (can't lose the last die)
@@ -171,20 +188,8 @@ angular.module('dicerollerApp')
         return;
       }
 
-      var mFirepower    = $scope.firepower === 1;
       var mAmbush       = $scope.ambush === 1;
       var m2xcasualties = $scope.doublecasualties === 1;
-      var mBunker       = $scope.bunker === 1;
-
-      // add an extra die to the attacker for firepower
-      if (mFirepower === true) {
-        aNumrolls += 1;
-      }
-
-      // add a die to defender for bunker
-      if (mBunker === true) {
-        dNumrolls += 1;
-      }
 
       var i=0;
       var aRolls = [];
