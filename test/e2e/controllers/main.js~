@@ -1,0 +1,21 @@
+
+describe('Diceroller app', function() {
+
+  describe('Modifiers', function() {
+    beforeEach(function() {
+      browser().navigateTo('../../../app/index.html');
+    });
+
+    it('should select max num dice for defender when bunker is clicked after dfnd rad', function() {
+      input('dArmysize').enter('100');
+      expect('dNumrolls').toBe(2);
+      input('dfndrad').check();
+      expect('dfndrad').toBe(1);
+      input('bunker').check();
+      expect('bunker').toBe(1);
+      
+      expect('dNumrolls').toBe(2);
+    });
+  });
+
+});
