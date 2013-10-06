@@ -124,11 +124,11 @@ angular.module('dicerollerApp')
       var mFirepower = $scope.firepower === 1;
 
       if (!mFirepower && dieNum === 4) {
-	return false;
+        return false;
       }
 
       if (mFirepower) {
-	aArmysize += 1;
+        aArmysize += 1;
       }
 
       var loseDie = false;
@@ -156,11 +156,11 @@ angular.module('dicerollerApp')
       var mBunker   = $scope.bunker === 1;
 
       if (dieNum === 3 && !mBunker) {
-	return false;
+        return false;
       }
 
       if (mBunker) {
-	dArmysize += 1;
+        dArmysize += 1;
       }
 
       var loseDie = false;
