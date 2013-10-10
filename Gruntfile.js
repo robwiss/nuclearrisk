@@ -340,8 +340,7 @@ module.exports = function (grunt) {
     'concurrent:test',
     'autoprefixer',
     'connect:test',
-//    'watch',
-    'karma',
+    'karma:unit',
     'karma:e2e',
   ]);
 
