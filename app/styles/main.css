@@ -6,12 +6,27 @@
 
 .nav, .pagination, .carousel a { cursor: pointer; }
 
+.app-unit {
+    margin: 0 auto 0 auto;
+    width: 300px;
+    line-height: 30px;
+    border-radius: 6px;
+    border-color: #eee;
+    border-style: solid;
+    padding: 10px;
+    padding-bottom: 40px;
+}
+
 span.edge {
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 0;
   padding-bottom: 0;
   display: block;
+}
+
+input {
+  width: 100%;
 }
 
 .diceselect {
