@@ -28,16 +28,16 @@ describe('Controller: MainCtrl', function () {
 
     // check attack dice
     for (var i=1; i < 5; i++) {
-      expect(aShowDie(i, parseInt("", 10), options)).toBe(false);
-      expect(aShowDie(i, parseInt(null, 10), options)).toBe(false);
-      expect(aShowDie(i, parseInt(undefined, 10), options)).toBe(false);
+      expect(logic.aShowDie(i, parseInt("", 10), options)).toBe(false);
+      expect(logic.aShowDie(i, parseInt(null, 10), options)).toBe(false);
+      expect(logic.aShowDie(i, parseInt(undefined, 10), options)).toBe(false);
     }
 
     // check defend dice
     for (var i=1; i < 4; i++) {
-      expect(aShowDie(i, parseInt("", 10), options)).toBe(false);
-      expect(aShowDie(i, parseInt(null, 10), options)).toBe(false);
-      expect(aShowDie(i, parseInt(undefined, 10), options)).toBe(false);
+      expect(logic.dShowDie(i, parseInt("", 10), options)).toBe(false);
+      expect(logic.dShowDie(i, parseInt(null, 10), options)).toBe(false);
+      expect(logic.dShowDie(i, parseInt(undefined, 10), options)).toBe(false);
     }
   });
   
@@ -67,7 +67,7 @@ describe('Controller: MainCtrl', function () {
 
     for (var armysize=1; armysize < 10; armysize++) {
       for (var dienum=1; dienum < 5; dienum++) {
-	expect(aShowDie(dienum, armysize, options)).toEqual(correctAnswers(dienum, armysize));
+	expect(logic.aShowDie(dienum, armysize, options)).toEqual(correctAnswers(dienum, armysize));
       }
     }
   });
@@ -98,7 +98,7 @@ describe('Controller: MainCtrl', function () {
 
     for (var armysize=1; armysize < 10; armysize++) {
       for (var dienum=1; dienum < 5; dienum++) {
-	expect(aShowDie(dienum, armysize, options)).toEqual(correctAnswers(dienum, armysize));
+	expect(logic.aShowDie(dienum, armysize, options)).toEqual(correctAnswers(dienum, armysize));
       }
     }
   });
@@ -129,7 +129,7 @@ describe('Controller: MainCtrl', function () {
 
     for (var armysize=1; armysize < 10; armysize++) {
       for (var dienum=1; dienum < 5; dienum++) {
-	expect(aShowDie(dienum, armysize, options)).toEqual(correctAnswers(dienum, armysize));
+	expect(logic.aShowDie(dienum, armysize, options)).toEqual(correctAnswers(dienum, armysize));
       }
     }
   });
@@ -160,7 +160,7 @@ describe('Controller: MainCtrl', function () {
 
     for (var armysize=1; armysize < 10; armysize++) {
       for (var dienum=1; dienum < 5; dienum++) {
-	expect(aShowDie(dienum, armysize, options)).toEqual(correctAnswers(dienum, armysize));
+	expect(logic.aShowDie(dienum, armysize, options)).toEqual(correctAnswers(dienum, armysize));
       }
     }
   });
@@ -191,7 +191,7 @@ describe('Controller: MainCtrl', function () {
 
     for (var armysize=1; armysize < 10; armysize++) {
       for (var dienum=1; dienum < 4; dienum++) {
-	expect(dShowDie(dienum, armysize, options)).toEqual(correctAnswers(dienum, armysize));
+	expect(logic.dShowDie(dienum, armysize, options)).toEqual(correctAnswers(dienum, armysize));
       }
     }
   });
@@ -222,7 +222,7 @@ describe('Controller: MainCtrl', function () {
 
     for (var armysize=1; armysize < 10; armysize++) {
       for (var dienum=1; dienum < 4; dienum++) {
-	expect(dShowDie(dienum, armysize, options)).toEqual(correctAnswers(dienum, armysize));
+	expect(logic.dShowDie(dienum, armysize, options)).toEqual(correctAnswers(dienum, armysize));
       }
     }
   });
@@ -253,7 +253,7 @@ describe('Controller: MainCtrl', function () {
 
     for (var armysize=1; armysize < 10; armysize++) {
       for (var dienum=1; dienum < 4; dienum++) {
-	expect(dShowDie(dienum, armysize, options)).toEqual(correctAnswers(dienum, armysize));
+	expect(logic.dShowDie(dienum, armysize, options)).toEqual(correctAnswers(dienum, armysize));
       }
     }
   });
@@ -285,7 +285,7 @@ describe('Controller: MainCtrl', function () {
     for (var armysize=1; armysize < 10; armysize++) {
       for (var dienum=1; dienum < 4; dienum++) {
 	//dump(dienum + " " + armysize + " " + (dShowDie(dienum, armysize, options)=== correctAnswers(dienum, armysize)));
-	expect(dShowDie(dienum, armysize, options)).toEqual(correctAnswers(dienum, armysize));
+	expect(logic.dShowDie(dienum, armysize, options)).toEqual(correctAnswers(dienum, armysize));
       }
     }
   });
